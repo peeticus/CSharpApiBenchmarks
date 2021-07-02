@@ -1,0 +1,64 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+option csharp_namespace = "ApiBenchmarks.Grpc";
+
+package ApiBenchmarks;
+
+service Benchmarker {
+  rpc Simple (SimpleRequest) returns (SimpleResponse);
+}
+
+message SimpleRequest {
+  FileRequest file = 1;
+  repeated ClassRequest classes = 2;
+}
+
+message FileRequest {
+  string name = 1;
+  repeated string headers = 2;
+  google.protobuf.Timestamp lastModifed = 3;
+  google.protobuf.Timestamp dateCreated = 4;
+  string fullPath = 5;
+  string owner = 6;
+}
+
+message ClassRequest {
+  string name = 1;
+  string visibility = 2;
+  repeated string implements = 3;
+  repeated FieldRequest fields = 4;
+  repeated PropertyRequest properties = 5;
+  repeated MethodRequest methods = 6;
+}
+
+message FieldRequest {
+  string name = 1;
+  string visibility = 2;
+  string dataType = 3;
+  string defaultValue = 4;
+}
+
+message PropertyRequest {
+  string name = 1;
+  string visibililty = 2;
+  string dataType = 3;
+  string defaultValue = 4;
+  FieldRequest backingField = 5;
+}
+
+message MethodRequest {
+  string name = 1;
+  string visibililty = 2;
+  string dataType = 3;
+  string returnType = 4;
+  repeated FieldRequest parameters = 5;
+}
+
+message SimpleResponse {
+  string programName = 1;
+  repeated string standardOutput = 2;
+  repeated string errorOutput = 3;
+  int32 exitCode = 4;
+}

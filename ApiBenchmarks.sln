@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31410.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiBenchmarks.Grpc", "src\ApiBenchmarks.Grpc\ApiBenchmarks.Grpc.csproj", "{9AD20CE6-F495-4E3B-B864-CB8F5C427403}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiBenchmarks.CliClient", "src\ApiBenchmarks.CliClient\ApiBenchmarks.CliClient.csproj", "{E18A860A-FAFA-471D-A13F-63EB861B9FA3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{DB15FE1D-44BD-4BCC-AD6B-FB6F7D4CC8B5}"
+	ProjectSection(SolutionItems) = preProject
+		.dockerignore = .dockerignore
+		.editorconfig = .editorconfig
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		Directory.Build.props = Directory.Build.props
+		LICENSE = LICENSE
+		README.md = README.md
+		stylecop.json = stylecop.json
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9AD20CE6-F495-4E3B-B864-CB8F5C427403}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9AD20CE6-F495-4E3B-B864-CB8F5C427403}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9AD20CE6-F495-4E3B-B864-CB8F5C427403}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9AD20CE6-F495-4E3B-B864-CB8F5C427403}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E18A860A-FAFA-471D-A13F-63EB861B9FA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E18A860A-FAFA-471D-A13F-63EB861B9FA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E18A860A-FAFA-471D-A13F-63EB861B9FA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E18A860A-FAFA-471D-A13F-63EB861B9FA3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {08081E8F-12DB-4B5B-986F-B41ECFBFEA33}
+	EndGlobalSection
+EndGlobal
