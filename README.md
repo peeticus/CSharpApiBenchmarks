@@ -1,6 +1,5 @@
 # API Benchmarks
 
-LICENSE: This code is wide open, do with it what you will. Written by Peter Hyde.
 [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
 
 The purpose of this project is to show benchmark comparisons of various types of APIs including:
@@ -54,4 +53,4 @@ If editing the Readme, please conform to the [standard-readme](https://github.co
 
 ## License
 
-Open License, Peter Hyde.
+The Unlicense, see https://unlicense.org. Written by Peter Hyde.
