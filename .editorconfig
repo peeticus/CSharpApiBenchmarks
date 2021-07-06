@@ -4,6 +4,10 @@
 # You can learn more about editorconfig here: https://docs.microsoft.com/en-us/visualstudio/ide/editorconfig-code-style-settings-reference
 [*.cs]
 
+# Member does not access instance data and can be marked static.
+# I very much prefer instance methods in most cases, with a few exceptions.
+dotnet_diagnostic.CA1822.severity = none
+
 # Unused usings
 dotnet_diagnostic.IDE0005.severity=warning
 

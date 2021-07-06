@@ -34,5 +34,34 @@ namespace ApiBenchmarks.Grpc.Services
         {
             return await Task.FromResult(this.Response);
         }
+
+        /// <summary>
+        /// Handles a basic GRPC request, but accepting and returning objects with a larger list structure
+        /// to better test situations with higher bandwidth usage.
+        /// </summary>
+        /// <param name="request">The GRPC request.</param>
+        /// <param name="context">GRPC context.</param>
+        /// <returns>Our dummy GRPC response.</returns>
+        public override async Task<SimpleResponseList> SimpleList(SimpleRequestList request, ServerCallContext context)
+        {
+            var response = new SimpleResponseList();
+            for (var requestIndex = 0; requestIndex < request.Requests.Count; requestIndex++)
+            {
+                response.Responses.Add(this.Response);
+            }
+
+            return await Task.FromResult(response);
+        }
+
+        /// <summary>
+        /// No request, smallish response.
+        /// </summary>
+        /// <param name="empty">No data.</param>
+        /// <param name="context">GRPC context.</param>
+        /// <returns>Our dummy GRPC response.</returns>
+        public override async Task<SimpleResponse> SmallSimple(Google.Protobuf.WellKnownTypes.Empty empty, ServerCallContext context)
+        {
+            return await Task.FromResult(this.Response);
+        }
     }
 }

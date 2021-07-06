@@ -1,6 +1,7 @@
 syntax = "proto3";
 
 import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
 
 option csharp_namespace = "ApiBenchmarks.Grpc";
 
@@ -8,6 +9,16 @@ package ApiBenchmarks;
 
 service Benchmarker {
   rpc Simple (SimpleRequest) returns (SimpleResponse);
+  rpc SimpleList (SimpleRequestList) returns (SimpleResponseList);
+  rpc SmallSimple (google.protobuf.Empty) returns (SimpleResponse);
+}
+
+message SimpleRequestList {
+  repeated SimpleRequest requests = 1;
+}
+
+message SimpleResponseList {
+  repeated SimpleResponse responses = 1;
 }
 
 message SimpleRequest {
@@ -51,9 +62,8 @@ message PropertyRequest {
 message MethodRequest {
   string name = 1;
   string visibililty = 2;
-  string dataType = 3;
-  string returnType = 4;
-  repeated FieldRequest parameters = 5;
+  string returnType = 3;
+  repeated FieldRequest parameters = 4;
 }
 
 message SimpleResponse {

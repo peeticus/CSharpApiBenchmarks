@@ -5,15 +5,15 @@ namespace ApiBenchmarks.CliClient
     using AutoFixture;
 
     /// <summary>
-    /// Generates a dummy GRPC request object.
+    /// Generates a dummy REST request object.
     /// </summary>
-    public class GrpcRequestGenerator
+    public class RestRequestGenerator
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="GrpcRequestGenerator"/> class.
+        /// Initializes a new instance of the <see cref="RestRequestGenerator"/> class.
         /// </summary>
         /// <param name="parameters">Parameters used in construction of the objects.</param>
-        public GrpcRequestGenerator(RequestGeneratorParameters parameters)
+        public RestRequestGenerator(RequestGeneratorParameters parameters)
         {
             this.Parameters = parameters;
         }
@@ -21,29 +21,29 @@ namespace ApiBenchmarks.CliClient
         private RequestGeneratorParameters Parameters { get; }
 
         /// <summary>
-        /// Generates a dummy GRPC request object.
+        /// Generates a dummy REST request object.
         /// </summary>
         /// <returns>The dummy request object.</returns>
-        public Grpc.SimpleRequest Generate()
+        public Rest.SimpleRequest Generate()
         {
             var fixture = new Fixture();
-            var request = fixture.Create<Grpc.SimpleRequest>();
+            var request = fixture.Create<Rest.SimpleRequest>();
 
             for (var requestClassesIndex = 1; requestClassesIndex <= this.Parameters.ClassCount; requestClassesIndex++)
             {
-                var classRequest = fixture.Create<Grpc.ClassRequest>();
+                var classRequest = fixture.Create<Rest.ClassRequest>();
 
                 for (var fieldIndex = 1; fieldIndex <= this.Parameters.FieldCount; fieldIndex++)
                 {
-                    classRequest.Fields.Add(fixture.Create<Grpc.FieldRequest>());
+                    classRequest.Fields.Add(fixture.Create<Rest.FieldRequest>());
                 }
 
                 for (var methodIndex = 1; methodIndex <= this.Parameters.MethodCount; methodIndex++)
                 {
-                    var methodRequest = fixture.Create<Grpc.MethodRequest>();
+                    var methodRequest = fixture.Create<Rest.MethodRequest>();
                     for (var parameterIndex = 1; parameterIndex <= this.Parameters.ParameterCount; parameterIndex++)
                     {
-                        methodRequest.Parameters.Add(fixture.Create<Grpc.FieldRequest>());
+                        methodRequest.Parameters.Add(fixture.Create<Rest.FieldRequest>());
                     }
 
                     classRequest.Methods.Add(methodRequest);
@@ -51,8 +51,8 @@ namespace ApiBenchmarks.CliClient
 
                 for (var propertyIndex = 1; propertyIndex <= this.Parameters.PropertyCount; propertyIndex++)
                 {
-                    var propertyRequest = fixture.Create<Grpc.PropertyRequest>();
-                    propertyRequest.BackingField = this.Parameters.HasBackingField ? new Grpc.FieldRequest() : null;
+                    var propertyRequest = fixture.Create<Rest.PropertyRequest>();
+                    propertyRequest.BackingField = this.Parameters.HasBackingField ? new Rest.FieldRequest() : null;
                     classRequest.Properties.Add(propertyRequest);
                 }
 
@@ -64,7 +64,7 @@ namespace ApiBenchmarks.CliClient
                 request.Classes.Add(classRequest);
             }
 
-            request.File = fixture.Create<Grpc.FileRequest>();
+            request.File = fixture.Create<Rest.FileRequest>();
 
             return request;
         }
