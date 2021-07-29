@@ -56,7 +56,7 @@ namespace ApiBenchmarks.CliClient
         /// <returns>Populated instance from the file.</returns>
         public static RequestGeneratorParameters ReadFromFile()
         {
-            var configContents = File.ReadAllText(Path.Combine(Path.GetTempPath(), $"{nameof(RequestGeneratorParameters)}.txt"));
+            var configContents = File.ReadAllText(Path.Combine(Path.GetTempPath(), "benchmarks", $"{nameof(RequestGeneratorParameters)}.txt"));
             return JsonSerializer.Deserialize<RequestGeneratorParameters>(configContents);
         }
 
@@ -65,7 +65,7 @@ namespace ApiBenchmarks.CliClient
         /// </summary>
         public void SaveToFile()
         {
-            File.WriteAllText(Path.Combine(Path.GetTempPath(), $"{nameof(RequestGeneratorParameters)}.txt"), JsonSerializer.Serialize(this));
+            File.WriteAllText(Path.Combine(Path.GetTempPath(),  "benchmarks", $"{nameof(RequestGeneratorParameters)}.txt"), JsonSerializer.Serialize(this));
         }
     }
 }

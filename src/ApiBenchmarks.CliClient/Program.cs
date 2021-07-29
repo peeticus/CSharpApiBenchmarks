@@ -3,9 +3,11 @@
 namespace ApiBenchmarks.CliClient
 {
     using System;
-    using System.Text.Json;
+    using System.Threading.Tasks;
 
     using BenchmarkDotNet.Running;
+
+    using Serilog;
 
     /// <summary>
     /// The program.
@@ -16,21 +18,26 @@ namespace ApiBenchmarks.CliClient
         /// Main program entry point.
         /// </summary>
         /// <param name="args">Runtime arguments.</param>
-        public static void Main(string[] args)
+        /// <returns>Task.</returns>
+        public static async Task Main(string[] args)
         {
-            HandleRequestGeneratorParameters();
+            Log.Logger = new LoggerConfiguration()
+                .MinimumLevel.Debug()
+                .WriteTo.Console()
+                .CreateLogger();
+            await new ApiBenchmarking().ClearLocalResultsFolder();
             CollectBenchmarkParameters();
             BenchmarkSwitcher.FromAssembly(typeof(Program).Assembly).Run(args);
+            if (!new WindowsRightsChecker().IsElevated())
+            {
+                var oldColor = Console.ForegroundColor;
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("===Did you know, if you run this app with elevated permissions (admin window) you can get CPU information?===");
+                Console.ForegroundColor = oldColor;
+            }
+
             Console.WriteLine("Benchmark test finished, results are above. Press any key to exit.");
             Console.ReadKey();
-        }
-
-        private static void HandleRequestGeneratorParameters()
-        {
-            var requestGeneratorParameters = new RequestGeneratorParameters();
-            requestGeneratorParameters.SaveToFile();
-            Console.WriteLine("The generation parameters for this run are: ");
-            Console.WriteLine(JsonSerializer.Serialize(requestGeneratorParameters));
         }
 
         private static void CollectBenchmarkParameters()

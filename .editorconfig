@@ -8,6 +8,10 @@
 # I very much prefer instance methods in most cases, with a few exceptions.
 dotnet_diagnostic.CA1822.severity = none
 
+# Use block body for methods.
+# I don't believe in this preference.
+dotnet_diagnostic.IDE0022.severity = none
+
 # Unused usings
 dotnet_diagnostic.IDE0005.severity=warning
 
@@ -133,3 +137,6 @@ dotnet_style_qualification_for_field = true:warning
 dotnet_style_qualification_for_method = true:warning
 #prefer properties to be prefaced with this. or Me. in Visual Basic
 dotnet_style_qualification_for_property = true:warning
+
+[*.{cs,vb}]
+dotnet_style_qualification_for_event=true:warning
