@@ -34,6 +34,9 @@ be chosen based on may factors. I then decided that I could at least do one of t
 It's pretty easy to rank API types by the speed with which they can process information, so that's what this project 
 does; it benchmarks the different types of API for comparison.
 
+## Configuration
+The runtime parameters for # of iterations per test, # of executions per iteration, etc are controlled by an appsettings.json file.
+
 ## Development Environment, Etc
 * Visual Studio 2019.
 * APIs, DLLs, CLI app.

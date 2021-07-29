@@ -31,7 +31,7 @@ namespace ApiBenchmarks.CliClient
         /// <returns>Populated instance from the file.</returns>
         public static BenchmarkParameters ReadFromFile()
         {
-            var configContents = File.ReadAllText(Path.Combine(Path.GetTempPath(), $"{nameof(BenchmarkParameters)}.txt"));
+            var configContents = File.ReadAllText(Path.Combine(Path.GetTempPath(), "benchmarks", $"{nameof(BenchmarkParameters)}.txt"));
             return JsonSerializer.Deserialize<BenchmarkParameters>(configContents);
         }
 
@@ -40,7 +40,9 @@ namespace ApiBenchmarks.CliClient
         /// </summary>
         public void SaveToFile()
         {
-            File.WriteAllText(Path.Combine(Path.GetTempPath(), $"{nameof(BenchmarkParameters)}.txt"), JsonSerializer.Serialize(this));
+            var directory = Path.Combine(Path.GetTempPath(), "benchmarks");
+            Directory.CreateDirectory(directory);
+            File.WriteAllText(Path.Combine(directory, $"{nameof(BenchmarkParameters)}.txt"), JsonSerializer.Serialize(this));
         }
     }
 }
