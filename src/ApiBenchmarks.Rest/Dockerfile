@@ -8,6 +8,7 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
 COPY ["ApiBenchmarks.Rest/ApiBenchmarks.Rest.csproj", "ApiBenchmarks.Rest/"]
+COPY ["ApiBenchmarks.Rest/ApiBenchmarks.Rest.csproj", "ApiBenchmarks.Dto/"]
 RUN dotnet restore "ApiBenchmarks.Rest/ApiBenchmarks.Rest.csproj"
 COPY . .
 WORKDIR "/src/ApiBenchmarks.Rest"

@@ -19,9 +19,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		stylecop.json = stylecop.json
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiBenchmarks.Rest", "src\ApiBenchmarks.Rest\ApiBenchmarks.Rest.csproj", "{F97E332B-9B2D-4DD0-B08C-48F86922BBF0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiBenchmarks.Rest", "src\ApiBenchmarks.Rest\ApiBenchmarks.Rest.csproj", "{F97E332B-9B2D-4DD0-B08C-48F86922BBF0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiBenchmarks.Dto", "src\ApiBenchmarks.Dto\ApiBenchmarks.Dto.csproj", "{905E63D5-8D91-4DD9-9F2F-3CC074CDEE03}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiBenchmarks.Dto", "src\ApiBenchmarks.Dto\ApiBenchmarks.Dto.csproj", "{905E63D5-8D91-4DD9-9F2F-3CC074CDEE03}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
